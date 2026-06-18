@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Richard Omorotionmwan — Software Engineer</title>
+<meta name="description" content="Richard Omorotionmwan — software engineer specializing in agentic AI systems, MCP-connected workflows, and production-grade integrations. Currently at Meta." />
+<meta name="author" content="Richard Omorotionmwan" />
+<!-- Open Graph -->
+<meta property="og:title" content="Richard Omorotionmwan — Software Engineer" />
+<meta property="og:description" content="Agentic AI systems, MCP workflows, and production integrations. Currently building Claude-powered diagnostic agents at Meta." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+<style>
+  :root{
+    --bg:#0b1018; --bg2:#0f1622; --panel:#141d2b; --panel2:#18222f;
+    --ink:#e9eef5; --muted:#9aabbd; --faint:#64768a; --line:#243140;
+    --accent:#5cc8ff; --accent2:#7ef0c2; --grad:linear-gradient(135deg,#5cc8ff,#7ef0c2);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1200px 600px at 80% -5%, #16263a 0%, rgba(11,16,24,0) 55%);
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px}
+  section{padding:64px 0; border-top:1px solid var(--line)}
+  h2{font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:28px}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:20; backdrop-filter:blur(10px);
+    background:rgba(11,16,24,.72); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+  .brand{font-weight:800; letter-spacing:-.01em}
+  .brand span{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .navlinks{display:flex; gap:22px; font-size:14px}
+  .navlinks a{color:var(--muted)} .navlinks a:hover{color:var(--ink); text-decoration:none}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* hero */
+  header.hero{padding:88px 0 64px}
+  .kicker{font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
+  header.hero h1{font-size:clamp(40px,7vw,68px); line-height:1.04; letter-spacing:-.02em; margin:14px 0 10px; font-weight:800}
+  .role{font-size:clamp(18px,3vw,24px); color:var(--muted); font-weight:500}
+  .role b{color:var(--ink); font-weight:600}
+  .loc{margin-top:14px; color:var(--faint); font-size:15px}
+  .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:10px;
+    font-size:14px; font-weight:600; border:1px solid var(--line); color:var(--ink); transition:.15s}
+  .btn:hover{text-decoration:none; border-color:var(--accent); transform:translateY(-1px)}
+  .btn.primary{background:var(--grad); color:#06121b; border:none}
+  .btn.primary:hover{filter:brightness(1.05)}
+
+  /* about */
+  .lead{font-size:19px; color:#d4dfeb; max-width:760px}
+  .lead b{color:#fff}
+
+  /* timeline */
+  .item{display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:none}
+  .when{color:var(--faint); font-size:14px}
+  .when .place{display:block; color:var(--muted); margin-top:2px}
+  .role-title{font-weight:700; font-size:18px}
+  .org{color:var(--accent); font-weight:600}
+  .item ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+  .item li{margin:6px 0}
+  @media(max-width:640px){.item{grid-template-columns:1fr; gap:6px}}
+
+  /* projects */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; transition:.18s}
+  .card:hover{border-color:var(--accent); transform:translateY(-2px)}
+  .card h3{font-size:18px; display:flex; align-items:center; gap:8px}
+  .card .tag{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent2); background:#10241e; border:1px solid #1d3b32; padding:2px 8px; border-radius:999px}
+  .card p{color:var(--muted); font-size:15px; margin:10px 0 14px}
+  .stack{display:flex; flex-wrap:wrap; gap:6px}
+  .chip{font-size:12px; color:var(--muted); background:var(--panel2); border:1px solid var(--line); padding:4px 9px; border-radius:7px}
+  .card .links{margin-top:14px; font-size:14px; display:flex; gap:16px}
+
+  /* skills */
+  .skillrow{display:grid; grid-template-columns:160px 1fr; gap:18px; padding:14px 0; border-bottom:1px solid var(--line)}
+  .skillrow:last-child{border-bottom:none}
+  .skillrow .label{color:var(--ink); font-weight:600; font-size:14px}
+  @media(max-width:640px){.skillrow{grid-template-columns:1fr; gap:8px}}
+
+  /* edu + certs */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:40px}
+  @media(max-width:640px){.two{grid-template-columns:1fr; gap:32px}}
+  .edu{padding:14px 0; border-bottom:1px solid var(--line)}
+  .edu:last-child{border-bottom:none}
+  .edu .deg{font-weight:700} .edu .sch{color:var(--muted); font-size:15px} .edu .yr{color:var(--faint); font-size:13px}
+
+  footer{padding:54px 0; border-top:1px solid var(--line); color:var(--faint); font-size:14px; text-align:center}
+  footer a{color:var(--muted)}
+  /* scroll-reveal is enhancement-only: content stays visible without JS */
+  .js .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+  .js .reveal.in{opacity:1; transform:none}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Richard <span>Omorotionmwan</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Software Engineer · AI &amp; Agentic Systems</div>
+    <h1>Richard Omorotionmwan</h1>
+    <p class="role">I build <b>agentic AI systems</b>, <b>MCP-connected workflows</b>, and production-grade integrations that turn LLMs into things that actually ship.</p>
+    <p class="loc">📍 Oakland, CA &nbsp;·&nbsp; Currently @ Meta</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View work</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">📄 Résumé</a>
+      <a class="btn" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:iheoma.richard@gmail.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <h2>About</h2>
+    <p class="lead">Software engineer and full-stack builder with hands-on experience designing <b>agentic AI systems</b> and connecting LLMs to real production systems. At <b>Meta</b>, I build Claude-powered diagnostic agents that automate failure investigation across 1,000+ real-time analytics pipelines. Independently, I shipped <b>Ogwu</b> — an end-to-end agentic telehealth platform with a multi-tool LangGraph agent, an event-driven AWS pipeline, and an LLM-as-a-judge eval suite. I'm pursuing an <b>M.S. in Computer Science (ML)</b> at Georgia Tech, and I like translating fuzzy business problems into working demos that make a solution tangible.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <div class="when">Oct 2025 – Present<span class="place">San Francisco, CA</span></div>
+      <div>
+        <div class="role-title">Infrastructure Support Engineer</div>
+        <div class="org">Meta <span style="color:var(--faint);font-weight:400">· contract via Crystal Equation</span></div>
+        <ul>
+          <li>Built Claude-powered diagnostic agents on Meta's internal agentic framework, automating failure investigation across <b>1,000+ Scuba</b> real-time analytics pipelines via LLM tool-calling and retrieval — directly reducing mean time to resolution.</li>
+          <li>Shipped AI-driven automation that translates infrastructure state into actionable remediation steps, demonstrating end-to-end LLM ↔ production-system integration.</li>
+          <li>Built React.js features for internal operational tooling with unit + CI test coverage that blocks malformed storage requests before they enter the system.</li>
+          <li>Ran on-call incident triage across distributed infrastructure: reproduction, cross-boundary debugging, and cross-functional remediation under time pressure.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">Sep 2024 – Oct 2025<span class="place">Edmonton, AB</span></div>
+      <div>
+        <div class="role-title">Data &amp; AI Platform Engineer Intern</div>
+        <div class="org">Alberta Investment Management Corporation (AIMCo)</div>
+        <ul>
+          <li>Designed and deployed Terraform-automated infrastructure (Databricks Unity Catalog, ADLS, service-principal roles) with an Azure DevOps CI/CD pipeline, eliminating manual release steps.</li>
+          <li>Built an automated reporting pipeline across Databricks, SQL, Power BI, and Microsoft Copilot — cutting reporting time by <b>93%</b> and demoing to IT and finance stakeholders.</li>
+          <li>Partnered across engineering and business teams to scope automation opportunities and deliver on tight timelines.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">May 2023 – Aug 2024<span class="place">Calgary, AB</span></div>
+      <div>
+        <div class="role-title">Data Analyst Co-op</div>
+        <div class="org">Suncor Energy</div>
+        <ul>
+          <li>Wrote an OOP Python application to automate risk-hierarchy generation from SQL parent-child relationships, replacing a manual workflow entirely.</li>
+          <li>Built an end-to-end automated reporting pipeline (Power Automate, Blob Storage, Databricks, PySpark ETL), cutting manual reporting effort by <b>50%</b>.</li>
+          <li>Delivered Power BI finance dashboards that turned raw financial data into clear, decision-ready summaries.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">2021 – 2022<span class="place">Alberta, Canada</span></div>
+      <div>
+        <div class="role-title">Earlier — Engineering &amp; Data Analytics Internships</div>
+        <div class="org">Enbridge · Emerson Automation Solutions</div>
+        <ul>
+          <li>Built Python automation for tank-limit computation and temperature-threshold alerting, replacing spreadsheet-based workflows.</li>
+          <li>Developed C++ data tooling and Tableau/Power BI analytics over SCADA systems, plus templates and QA for mass data entry.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <h2>Projects</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Ogwu <span class="tag">Flagship</span></h3>
+        <p>An 8-tool LangGraph agentic telehealth platform: hospital search by GPS, Google Calendar booking, drug-interaction checks, emergency escalation, and patient-history retrieval — a live demo of complex multi-service agent orchestration. Includes an LLM-as-a-judge CI eval suite (60 cases, 85% pass gate) and an event-driven AWS pipeline with end-to-end observability.</p>
+        <div class="stack">
+          <span class="chip">LangGraph</span><span class="chip">React Native</span><span class="chip">Next.js</span>
+          <span class="chip">OpenAI</span><span class="chip">AWS</span><span class="chip">pgvector</span><span class="chip">Supabase</span>
+        </div>
+        <div class="links"><a href="https://github.com/iheomach/ogwu" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h3>Credian <span class="tag">Building now</span></h3>
+        <p>A financial-control and trust layer for AI agents: a durable agent-identity model, containment-based observability (every agent action captured at an enforced egress point), and a behavioral scoring engine that gates what an agent is authorized to do — built on an AWS Firecracker sandbox.</p>
+        <div class="stack">
+          <span class="chip">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip">AWS</span>
+          <span class="chip">Firecracker</span><span class="chip">Envoy</span><span class="chip">Agent Trust</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>HunterQRHunter</h3>
+        <p>A location-based Android game built around user-scanned QR codes. Built the geolocation component over Firebase-stored scan data and a Google Maps UI with dynamic markers.</p>
+        <div class="stack">
+          <span class="chip">Java</span><span class="chip">Android Studio</span><span class="chip">Firebase</span><span class="chip">Google Maps API</span>
+        </div>
+        <div class="links"><a href="https://github.com/CMPUT301W23T52/HunterQRHunter" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h3>Edmonton Map Client/Server</h3>
+        <p>An interactive routing app: reads start/goal points from a map and plots the shortest path using Dijkstra's algorithm over a weighted directed graph, with client↔server communication over sockets.</p>
+        <div class="stack">
+          <span class="chip">C++</span><span class="chip">Dijkstra</span><span class="chip">Sockets</span><span class="chip">Graphs</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <h2>Skills</h2>
+    <div class="skillrow"><div class="label">Languages</div><div class="stack">
+      <span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">PHP</span>
+    </div></div>
+    <div class="skillrow"><div class="label">AI &amp; Agents</div><div class="stack">
+      <span class="chip">LangGraph</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">MCP</span><span class="chip">Agent orchestration</span><span class="chip">Tool-calling</span><span class="chip">RAG · pgvector</span><span class="chip">LLM-as-a-judge</span><span class="chip">LlamaGuard</span>
+    </div></div>
+    <div class="skillrow"><div class="label">Cloud &amp; Infra</div><div class="stack">
+      <span class="chip">AWS (Lambda · SQS · EventBridge · S3 · Textract)</span><span class="chip">Azure</span><span class="chip">Terraform</span><span class="chip">Docker</span><span class="chip">GitHub Actions CI/CD</span>
+    </div></div>
+    <div class="skillrow"><div class="label">Data</div><div class="stack">
+      <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">dbt</span><span class="chip">Databricks</span><span class="chip">PySpark</span><span class="chip">Power BI</span><span class="chip">Supabase</span>
+    </div></div>
+    <div class="skillrow"><div class="label">Frontend</div><div class="stack">
+      <span class="chip">React</span><span class="chip">React Native</span><span class="chip">Next.js</span><span class="chip">Node.js / Express</span>
+    </div></div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap reveal">
+    <h2>Education &amp; Certifications</h2>
+    <div class="two">
+      <div>
+        <div class="edu">
+          <div class="deg">M.S. Computer Science — ML Specialization</div>
+          <div class="sch">Georgia Institute of Technology (OMSCS)</div>
+          <div class="yr">2026 – 2029</div>
+        </div>
+        <div class="edu">
+          <div class="deg">B.S. Computing Science — Software Practice</div>
+          <div class="sch">University of Alberta</div>
+          <div class="yr">2020 – 2025</div>
+        </div>
+      </div>
+      <div>
+        <div class="edu">
+          <div class="deg">Azure AI Engineer Associate (AI-102)</div>
+          <div class="sch">Microsoft</div>
+        </div>
+        <div class="edu">
+          <div class="deg">Azure Fundamentals (AZ-900)</div>
+          <div class="sch">Microsoft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal" style="text-align:center">
+    <h2 style="text-align:center">Get in touch</h2>
+    <p class="lead" style="margin:0 auto 26px">Open to software engineering and AI/agent roles. The fastest way to reach me is email.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn primary" href="mailto:iheoma.richard@gmail.com">iheoma.richard@gmail.com</a>
+      <a class="btn" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="yr"></span> Richard Omorotionmwan · Built with plain HTML &amp; CSS · Hosted on GitHub Pages
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12});
+    reveals.forEach(function(el){ io.observe(el); });
+    // safety net: ensure everything is visible shortly after load
+    window.addEventListener('load', function(){ setTimeout(function(){ reveals.forEach(function(el){ el.classList.add('in'); }); }, 1200); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
