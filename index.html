@@ -3,102 +3,132 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Richard Omorotionmwan — Software &amp; Data Engineer</title>
-<meta name="description" content="Richard Omorotionmwan — software and data engineer specializing in CI/CD and ETL pipelines, agentic AI systems, and data platforms with Python, SQL, and Databricks. Currently at Meta." />
+<title>Richard Omorotionmwan · Software &amp; Data Engineer</title>
+<meta name="description" content="Richard Omorotionmwan, software and data engineer specializing in CI/CD and ETL pipelines, agentic AI systems, and data platforms with Python, SQL, and Databricks. Currently at Meta." />
 <meta name="author" content="Richard Omorotionmwan" />
-<!-- Open Graph -->
-<meta property="og:title" content="Richard Omorotionmwan — Software &amp; Data Engineer" />
-<meta property="og:description" content="CI/CD and ETL pipelines, agentic AI systems, and data platforms — Python, SQL, Databricks. Currently building Claude-powered diagnostic agents at Meta." />
+<meta property="og:title" content="Richard Omorotionmwan · Software &amp; Data Engineer" />
+<meta property="og:description" content="CI/CD and ETL pipelines, agentic AI systems, and data platforms. Python, SQL, Databricks. Currently building Claude-powered diagnostic agents at Meta." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 <style>
   :root{
-    --bg:#0b1018; --bg2:#0f1622; --panel:#141d2b; --panel2:#18222f;
-    --ink:#e9eef5; --muted:#9aabbd; --faint:#64768a; --line:#243140;
-    --accent:#5cc8ff; --accent2:#7ef0c2; --grad:linear-gradient(135deg,#5cc8ff,#7ef0c2);
+    --bg:#070707;
+    --ink:#f4f4f6; --muted:#a6a6ae; --faint:#6d6d77;
+    --hair:rgba(255,255,255,.09);
+    --glass-top:rgba(255,255,255,.075); --glass-bot:rgba(255,255,255,.025);
+    --glass-border:rgba(255,255,255,.11);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
-    background:var(--bg); color:var(--ink);
+    background:var(--bg); color:var(--ink); position:relative; min-height:100vh;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
     line-height:1.65; -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(1200px 600px at 80% -5%, #16263a 0%, rgba(11,16,24,0) 55%);
   }
-  a{color:var(--accent); text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:920px; margin:0 auto; padding:0 24px}
-  section{padding:64px 0; border-top:1px solid var(--line)}
-  h2{font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:28px}
+  /* slightly-brighter-black blobs behind the glass so the blur has something to refract */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; background:
+      radial-gradient(52% 42% at 16% 10%, #1c1c20 0%, transparent 60%),
+      radial-gradient(46% 36% at 86% 18%, #161619 0%, transparent 64%),
+      radial-gradient(60% 48% at 10% 84%, #19191d 0%, transparent 66%),
+      radial-gradient(44% 34% at 82% 92%, #141417 0%, transparent 64%),
+      var(--bg);
+  }
+  a{color:#d6d6dc} a:hover{color:#fff}
+  .wrap{max-width:940px; margin:0 auto; padding:0 24px}
+  section{padding:62px 0}
+  section + section{border-top:1px solid var(--hair)}
+  h2{font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9b9ba4; font-weight:700; margin-bottom:30px}
+
+  /* ---- liquid glass surface (from Ogwu source: gradient fill, blur+saturate,
+         gradient border, specular top edge, layered inset + drop shadows) ---- */
+  .glass{
+    position:relative;
+    background:linear-gradient(180deg, var(--glass-top) 0%, var(--glass-bot) 100%);
+    -webkit-backdrop-filter:blur(28px) saturate(115%); backdrop-filter:blur(28px) saturate(115%);
+    border:1px solid var(--glass-border); border-radius:24px;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255,255,255,.14),
+      inset 0 -1px 0 0 rgba(255,255,255,.03),
+      inset 0 0 0 1px rgba(255,255,255,.03),
+      0 10px 34px rgba(0,0,0,.5),
+      0 2px 8px rgba(0,0,0,.4);
+  }
+  .glass::before{ /* specular sliver along the top edge */
+    content:""; position:absolute; inset:0 0 auto 0; height:46%; border-radius:24px 24px 0 0;
+    background:linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 100%);
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent); mask-image:linear-gradient(180deg,#000,transparent);
+    pointer-events:none;
+  }
 
   /* nav */
-  nav{position:sticky; top:0; z-index:20; backdrop-filter:blur(10px);
-    background:rgba(11,16,24,.72); border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px}
+  nav{position:sticky; top:0; z-index:30}
+  nav .bar{margin:12px auto 0; max-width:940px;
+    display:flex; align-items:center; justify-content:space-between; padding:12px 20px; border-radius:16px}
   .brand{font-weight:800; letter-spacing:-.01em}
-  .brand span{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .brand span{background:linear-gradient(180deg,#fff,#9c9ca6); -webkit-background-clip:text; background-clip:text; color:transparent}
   .navlinks{display:flex; gap:22px; font-size:14px}
-  .navlinks a{color:var(--muted)} .navlinks a:hover{color:var(--ink); text-decoration:none}
+  .navlinks a{color:var(--muted)} .navlinks a:hover{color:#fff; text-decoration:none}
   @media(max-width:640px){.navlinks{display:none}}
 
   /* hero */
-  header.hero{padding:88px 0 64px}
-  .kicker{font-size:14px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent2); font-weight:700}
-  header.hero h1{font-size:clamp(40px,7vw,68px); line-height:1.04; letter-spacing:-.02em; margin:14px 0 10px; font-weight:800}
-  .role{font-size:clamp(18px,3vw,24px); color:var(--muted); font-weight:500}
+  header.hero{padding:80px 0 58px}
+  .kicker{font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:#bdbdc6; font-weight:700}
+  header.hero h1{font-size:clamp(40px,7vw,70px); line-height:1.03; letter-spacing:-.02em; margin:14px 0 12px; font-weight:800;
+    background:linear-gradient(180deg,#ffffff,#b6b6bf); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .role{font-size:clamp(18px,2.6vw,23px); color:var(--muted); font-weight:500; max-width:780px}
   .role b{color:var(--ink); font-weight:600}
   .loc{margin-top:14px; color:var(--faint); font-size:15px}
   .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
-  .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:10px;
-    font-size:14px; font-weight:600; border:1px solid var(--line); color:var(--ink); transition:.15s}
-  .btn:hover{text-decoration:none; border-color:var(--accent); transform:translateY(-1px)}
-  .btn.primary{background:var(--grad); color:#06121b; border:none}
-  .btn.primary:hover{filter:brightness(1.05)}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:12px;
+    font-size:14px; font-weight:600; color:var(--ink); transition:transform .15s, border-color .15s}
+  .btn:hover{text-decoration:none; transform:translateY(-2px)}
+  .btn.primary{background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.07)); border-color:rgba(255,255,255,.24)}
 
-  /* about */
-  .lead{font-size:19px; color:#d4dfeb; max-width:760px}
-  .lead b{color:#fff}
+  .lead{font-size:19px; color:#d7d7de; max-width:800px}
+  .lead b{color:#fff; font-weight:600}
 
-  /* timeline */
-  .item{display:grid; grid-template-columns:170px 1fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--line)}
-  .item:last-child{border-bottom:none}
+  /* experience timeline */
+  .item{display:grid; grid-template-columns:178px 1fr; gap:22px; padding:22px; margin-bottom:16px}
   .when{color:var(--faint); font-size:14px}
   .when .place{display:block; color:var(--muted); margin-top:2px}
   .role-title{font-weight:700; font-size:18px}
-  .org{color:var(--accent); font-weight:600}
+  .org{color:#cfcfd6; font-weight:600}
+  .org .sub{color:var(--faint); font-weight:400}
   .item ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-  .item li{margin:6px 0}
-  @media(max-width:640px){.item{grid-template-columns:1fr; gap:6px}}
+  .item li{margin:7px 0}
+  @media(max-width:640px){.item{grid-template-columns:1fr; gap:8px}}
 
   /* projects */
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
   @media(max-width:680px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; transition:.18s}
-  .card:hover{border-color:var(--accent); transform:translateY(-2px)}
-  .card h3{font-size:18px; display:flex; align-items:center; gap:8px}
-  .card .tag{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--accent2); background:#10241e; border:1px solid #1d3b32; padding:2px 8px; border-radius:999px}
-  .card p{color:var(--muted); font-size:15px; margin:10px 0 14px}
-  .stack{display:flex; flex-wrap:wrap; gap:6px}
-  .chip{font-size:12px; color:var(--muted); background:var(--panel2); border:1px solid var(--line); padding:4px 9px; border-radius:7px}
-  .card .links{margin-top:14px; font-size:14px; display:flex; gap:16px}
+  .card{padding:24px; transition:transform .18s}
+  .card:hover{transform:translateY(-3px)}
+  .card h3{font-size:19px; display:flex; align-items:center; gap:9px}
+  .card .tag{font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#cdcdd4;
+    background:rgba(255,255,255,.07); border:1px solid var(--glass-border); padding:3px 9px; border-radius:999px}
+  .card p{color:var(--muted); font-size:15px; margin:12px 0 16px}
+  .stack{display:flex; flex-wrap:wrap; gap:7px}
+  .chip{font-size:12px; color:#c2c2ca; background:rgba(255,255,255,.05); border:1px solid var(--hair); padding:5px 10px; border-radius:9px}
+  .card .links{margin-top:16px; font-size:14px}
 
   /* skills */
-  .skillrow{display:grid; grid-template-columns:160px 1fr; gap:18px; padding:14px 0; border-bottom:1px solid var(--line)}
+  .skillrow{display:grid; grid-template-columns:190px 1fr; gap:18px; padding:16px 0; border-bottom:1px solid var(--hair)}
   .skillrow:last-child{border-bottom:none}
   .skillrow .label{color:var(--ink); font-weight:600; font-size:14px}
   @media(max-width:640px){.skillrow{grid-template-columns:1fr; gap:8px}}
 
-  /* edu + certs */
-  .two{display:grid; grid-template-columns:1fr 1fr; gap:40px}
-  @media(max-width:640px){.two{grid-template-columns:1fr; gap:32px}}
-  .edu{padding:14px 0; border-bottom:1px solid var(--line)}
+  /* education + certs */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .eblock{padding:22px}
+  .edu{padding:12px 0; border-bottom:1px solid var(--hair)}
   .edu:last-child{border-bottom:none}
-  .edu .deg{font-weight:700} .edu .sch{color:var(--muted); font-size:15px} .edu .yr{color:var(--faint); font-size:13px}
+  .edu .deg{font-weight:700} .edu .sch{color:var(--muted); font-size:15px} .edu .yr{color:var(--faint); font-size:13px; margin-top:2px}
 
-  footer{padding:54px 0; border-top:1px solid var(--line); color:var(--faint); font-size:14px; text-align:center}
+  footer{padding:50px 0 60px; border-top:1px solid var(--hair); color:var(--faint); font-size:14px; text-align:center}
   footer a{color:var(--muted)}
-  /* scroll-reveal is enhancement-only: content stays visible without JS */
+
   .js .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
   .js .reveal.in{opacity:1; transform:none}
 </style>
@@ -107,7 +137,7 @@
 <body>
 
 <nav>
-  <div class="wrap">
+  <div class="bar glass">
     <div class="brand">Richard <span>Omorotionmwan</span></div>
     <div class="navlinks">
       <a href="#about">About</a>
@@ -123,14 +153,14 @@
   <div class="wrap">
     <div class="kicker">Software &amp; Data Engineer</div>
     <h1>Richard Omorotionmwan</h1>
-    <p class="role">I build <b>agentic AI systems</b> and <b>CI/CD &amp; ETL pipelines</b> that automate infrastructure deployment and cut manual data movement — with <b>Python, SQL, and Databricks</b> at the core.</p>
+    <p class="role">I build <b>agentic AI systems</b> and <b>CI/CD &amp; ETL pipelines</b> that automate infrastructure deployment and cut manual data movement, with <b>Python, SQL, and Databricks</b> at the core.</p>
     <p class="loc">📍 Oakland, CA &nbsp;·&nbsp; Currently @ Meta</p>
     <div class="cta">
-      <a class="btn primary" href="#projects">View work</a>
-      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">📄 Résumé</a>
-      <a class="btn" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="mailto:iheoma.richard@gmail.com">Email</a>
+      <a class="btn primary glass" href="#projects">View work</a>
+      <a class="btn glass" href="resume.pdf" target="_blank" rel="noopener">📄 Résumé</a>
+      <a class="btn glass" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn glass" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn glass" href="mailto:iheoma.richard@gmail.com">Email</a>
     </div>
   </div>
 </header>
@@ -138,7 +168,7 @@
 <section id="about">
   <div class="wrap reveal">
     <h2>About</h2>
-    <p class="lead">Software and data engineer who builds both the systems and the pipelines behind them — from <b>agentic AI</b> to the <b>CI/CD and ETL</b> plumbing that moves data and ships infrastructure reliably. At <b>Meta</b>, I build Claude-powered diagnostic agents across 1,000+ real-time analytics pipelines. At <b>AIMCo</b> and <b>Suncor</b>, I shipped Terraform-automated infrastructure deployment and ETL reporting pipelines that cut manual effort by up to <b>93%</b>. My core toolkit is <b>Python, SQL, and Databricks</b>, and on the side I built <b>Ogwu</b>, an end-to-end agentic platform. I'm pursuing an <b>M.S. in Computer Science (ML)</b> at Georgia Tech.</p>
+    <p class="lead">Software and data engineer with production experience building full-stack applications, agentic AI systems, and end-to-end ETL pipelines across cloud platforms. I have delivered data and infrastructure solutions at <b>Meta</b>, an investment management firm with <b>$160B+ AUM</b>, and a large-scale energy company, spanning real-time analytics, Terraform-automated provisioning, and LLM-powered automation. I independently shipped <b>Ogwu</b>, an agentic telehealth platform with a multi-tool LangGraph agent, an event-driven AWS pipeline, and an LLM-as-a-judge eval suite. I work fluently in <b>Python, SQL, PySpark, dbt, and Databricks</b>, and I like turning messy data and ambiguous business problems into robust, repeatable systems.</p>
   </div>
 </section>
 
@@ -146,54 +176,43 @@
   <div class="wrap reveal">
     <h2>Experience</h2>
 
-    <div class="item">
-      <div class="when">Oct 2025 – Present<span class="place">San Francisco, CA</span></div>
+    <div class="item glass">
+      <div class="when">Oct 2025 - Present<span class="place">San Francisco, CA</span></div>
       <div>
         <div class="role-title">Infrastructure Support Engineer</div>
-        <div class="org">Meta <span style="color:var(--faint);font-weight:400">· contract via Crystal Equation</span></div>
+        <div class="org">Meta <span class="sub">· contract via Crystal Equation</span></div>
         <ul>
-          <li>Built Claude-powered diagnostic agents on Meta's internal agentic framework, automating failure investigation across <b>1,000+ Scuba</b> real-time analytics pipelines via LLM tool-calling and retrieval — directly reducing mean time to resolution.</li>
-          <li>Shipped AI-driven automation that translates infrastructure state into actionable remediation steps, demonstrating end-to-end LLM ↔ production-system integration.</li>
-          <li>Built React.js features for internal operational tooling with unit + CI test coverage that blocks malformed storage requests before they enter the system.</li>
-          <li>Ran on-call incident triage across distributed infrastructure: reproduction, cross-boundary debugging, and cross-functional remediation under time pressure.</li>
+          <li>Support and maintain Scuba, Meta's real-time analytics platform, across <b>1,000+ production data pipelines</b>: monitoring ingestion health at every stage, diagnosing ETL failures in distributed infrastructure, and driving remediation with backend and production engineers.</li>
+          <li>Built Claude-powered diagnostic agents on Meta's internal agentic framework using LLM tool-calling and retrieval, automating failure investigation across pipelines and directly reducing mean time to resolution.</li>
+          <li>Owned storage capacity governance for Scuba tables, driving allocation decisions across engineering and finance stakeholders while balancing reliability against cost.</li>
+          <li>Built React.js features for internal operational tooling with input-validation logic that prevents malformed table storage requests, plus unit and CI/CD test coverage to verify regression fixes.</li>
         </ul>
       </div>
     </div>
 
-    <div class="item">
-      <div class="when">Sep 2024 – Oct 2025<span class="place">Edmonton, AB</span></div>
+    <div class="item glass">
+      <div class="when">Sep 2024 - Oct 2025<span class="place">Edmonton, AB</span></div>
       <div>
         <div class="role-title">Data &amp; AI Platform Engineer Intern</div>
         <div class="org">Alberta Investment Management Corporation (AIMCo)</div>
         <ul>
-          <li>Designed and deployed Terraform-automated infrastructure (Databricks Unity Catalog, ADLS, service-principal roles) with an Azure DevOps CI/CD pipeline, eliminating manual release steps.</li>
-          <li>Built an automated reporting pipeline across Databricks, SQL, Power BI, and Microsoft Copilot — cutting reporting time by <b>93%</b> and demoing to IT and finance stakeholders.</li>
-          <li>Partnered across engineering and business teams to scope automation opportunities and deliver on tight timelines.</li>
+          <li>Designed and delivered end-to-end data infrastructure on Azure for a <b>$160B+ AUM</b> investment firm: Terraform-automated Databricks Unity Catalog provisioning, ADLS External Locations, Storage Credentials, and service principal role assignments, eliminating manual release steps.</li>
+          <li>Built an Azure DevOps CI/CD pipeline to automate dbt job deployment, improving delivery reliability and reducing release friction.</li>
+          <li>Monitored ADF and Databricks ETL jobs daily, led incident bridge calls, performed root-cause analysis, and drove remediation to maintain SLA compliance across investment data pipelines.</li>
+          <li>Built an automated analytics dashboard integrating Databricks, SQL, Power BI, and Microsoft Copilot AI, cutting reporting time by <b>93%</b>; presented to stakeholders across IT and finance.</li>
         </ul>
       </div>
     </div>
 
-    <div class="item">
-      <div class="when">May 2023 – Aug 2024<span class="place">Calgary, AB</span></div>
+    <div class="item glass">
+      <div class="when">May 2023 - Aug 2024<span class="place">Calgary, AB</span></div>
       <div>
         <div class="role-title">Data Analyst Co-op</div>
         <div class="org">Suncor Energy</div>
         <ul>
-          <li>Wrote an OOP Python application to automate risk-hierarchy generation from SQL parent-child relationships, replacing a manual workflow entirely.</li>
-          <li>Built an end-to-end automated reporting pipeline (Power Automate, Blob Storage, Databricks, PySpark ETL), cutting manual reporting effort by <b>50%</b>.</li>
-          <li>Delivered Power BI finance dashboards that turned raw financial data into clear, decision-ready summaries.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="when">2021 – 2022<span class="place">Alberta, Canada</span></div>
-      <div>
-        <div class="role-title">Earlier — Engineering &amp; Data Analytics Internships</div>
-        <div class="org">Enbridge · Emerson Automation Solutions</div>
-        <ul>
-          <li>Built Python automation for tank-limit computation and temperature-threshold alerting, replacing spreadsheet-based workflows.</li>
-          <li>Developed C++ data tooling and Tableau/Power BI analytics over SCADA systems, plus templates and QA for mass data entry.</li>
+          <li>Built an end-to-end automated financial reporting pipeline using Power Automate, Azure Blob Storage, Databricks, and REST APIs with PySpark ETL transformations, cutting manual reporting effort by <b>50%</b>.</li>
+          <li>Developed an OOP Python application to automate risk hierarchy generation from parent-child relationships in a SQL database, replacing a manual workflow and feeding a live Power BI supply chain dashboard.</li>
+          <li>Designed DAX and Power Query scripts for efficient querying in Power BI, producing operational reports tracking supply chain and financial metrics for engineering and finance stakeholders.</li>
         </ul>
       </div>
     </div>
@@ -206,9 +225,9 @@
     <h2>Projects</h2>
     <div class="grid">
 
-      <div class="card">
+      <div class="card glass">
         <h3>Ogwu <span class="tag">Flagship</span></h3>
-        <p>An 8-tool LangGraph agentic telehealth platform: hospital search by GPS, Google Calendar booking, drug-interaction checks, emergency escalation, and patient-history retrieval — a live demo of complex multi-service agent orchestration. Includes an LLM-as-a-judge CI eval suite (60 cases, 85% pass gate) and an event-driven AWS pipeline with end-to-end observability.</p>
+        <p>An 8-tool LangGraph agentic telehealth platform: hospital search by GPS, Google Calendar booking, drug-interaction checks, emergency escalation, and patient-history retrieval. It runs on an event-driven AWS pipeline (S3, EventBridge, two Lambdas, SQS, DLQ, CloudWatch) with least-privileged IAM per function, a RAG pipeline (AWS Textract, pgvector, cosine-similarity retrieval), and an LLM-as-a-judge CI eval suite (60 cases, 85% pass gate). Ships a React Native patient app and a Next.js doctor dashboard with multilingual support.</p>
         <div class="stack">
           <span class="chip">LangGraph</span><span class="chip">React Native</span><span class="chip">Next.js</span>
           <span class="chip">OpenAI</span><span class="chip">AWS</span><span class="chip">pgvector</span><span class="chip">Supabase</span>
@@ -216,29 +235,12 @@
         <div class="links"><a href="https://github.com/iheomach/ogwu" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
 
-      <div class="card">
+      <div class="card glass">
         <h3>Credian <span class="tag">Building now</span></h3>
-        <p>A financial-control and trust layer for AI agents: a durable agent-identity model, containment-based observability (every agent action captured at an enforced egress point), and a behavioral scoring engine that gates what an agent is authorized to do — built on an AWS Firecracker sandbox.</p>
+        <p>A financial-control and trust layer for AI agents: a durable agent-identity model, containment-based observability (every agent action captured at an enforced egress point), and a behavioral scoring engine that gates what an agent is authorized to do, built on an AWS Firecracker sandbox.</p>
         <div class="stack">
           <span class="chip">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip">AWS</span>
           <span class="chip">Firecracker</span><span class="chip">Envoy</span><span class="chip">Agent Trust</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>HunterQRHunter</h3>
-        <p>A location-based Android game built around user-scanned QR codes. Built the geolocation component over Firebase-stored scan data and a Google Maps UI with dynamic markers.</p>
-        <div class="stack">
-          <span class="chip">Java</span><span class="chip">Android Studio</span><span class="chip">Firebase</span><span class="chip">Google Maps API</span>
-        </div>
-        <div class="links"><a href="https://github.com/CMPUT301W23T52/HunterQRHunter" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </div>
-
-      <div class="card">
-        <h3>Edmonton Map Client/Server</h3>
-        <p>An interactive routing app: reads start/goal points from a map and plots the shortest path using Dijkstra's algorithm over a weighted directed graph, with client↔server communication over sockets.</p>
-        <div class="stack">
-          <span class="chip">C++</span><span class="chip">Dijkstra</span><span class="chip">Sockets</span><span class="chip">Graphs</span>
         </div>
       </div>
 
@@ -250,19 +252,22 @@
   <div class="wrap reveal">
     <h2>Skills</h2>
     <div class="skillrow"><div class="label">Languages</div><div class="stack">
-      <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">Bash</span><span class="chip">PHP</span>
+      <span class="chip">Python (Pandas, PySpark)</span><span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">C++</span><span class="chip">Bash</span><span class="chip">PHP</span>
     </div></div>
-    <div class="skillrow"><div class="label">Data &amp; Pipelines</div><div class="stack">
-      <span class="chip">Databricks</span><span class="chip">PySpark</span><span class="chip">SQL (advanced)</span><span class="chip">dbt</span><span class="chip">ETL design</span><span class="chip">Power Automate</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Power BI</span><span class="chip">Supabase</span>
+    <div class="skillrow"><div class="label">Data Engineering &amp; ETL</div><div class="stack">
+      <span class="chip">Databricks (Unity Catalog)</span><span class="chip">Apache Spark</span><span class="chip">PySpark</span><span class="chip">dbt</span><span class="chip">Azure Data Factory</span><span class="chip">Azure Synapse</span><span class="chip">Data modeling</span><span class="chip">Schema design</span><span class="chip">Warehouse architecture</span>
     </div></div>
     <div class="skillrow"><div class="label">Cloud &amp; DevOps</div><div class="stack">
-      <span class="chip">AWS (Lambda · SQS · EventBridge · S3 · Textract)</span><span class="chip">Azure (ADF · ADLS · Synapse)</span><span class="chip">Terraform</span><span class="chip">GitHub Actions CI/CD</span><span class="chip">Azure DevOps</span><span class="chip">Docker</span>
+      <span class="chip">AWS (Lambda, SQS, EventBridge, S3, Textract, CloudWatch)</span><span class="chip">Azure (ADF, Databricks, Synapse, ADLS)</span><span class="chip">Terraform</span><span class="chip">GitHub Actions</span><span class="chip">Azure DevOps</span><span class="chip">CI/CD</span><span class="chip">Docker</span>
+    </div></div>
+    <div class="skillrow"><div class="label">Databases &amp; BI</div><div class="stack">
+      <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">Supabase</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span>
     </div></div>
     <div class="skillrow"><div class="label">AI &amp; Agents</div><div class="stack">
-      <span class="chip">LangGraph</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">MCP</span><span class="chip">Agent orchestration</span><span class="chip">Tool-calling</span><span class="chip">RAG · pgvector</span><span class="chip">LLM-as-a-judge</span><span class="chip">LlamaGuard</span>
+      <span class="chip">LangGraph</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">MCP</span><span class="chip">Agent orchestration</span><span class="chip">Tool-calling</span><span class="chip">RAG, pgvector</span>
     </div></div>
-    <div class="skillrow"><div class="label">Frontend</div><div class="stack">
-      <span class="chip">React</span><span class="chip">React Native</span><span class="chip">Next.js</span><span class="chip">Node.js / Express</span>
+    <div class="skillrow"><div class="label">Web &amp; APIs</div><div class="stack">
+      <span class="chip">React</span><span class="chip">React Native</span><span class="chip">Next.js</span><span class="chip">Node.js / Express</span><span class="chip">REST APIs</span><span class="chip">Webhooks</span><span class="chip">OAuth</span>
     </div></div>
   </div>
 </section>
@@ -271,19 +276,19 @@
   <div class="wrap reveal">
     <h2>Education &amp; Certifications</h2>
     <div class="two">
-      <div>
+      <div class="eblock glass">
         <div class="edu">
-          <div class="deg">M.S. Computer Science — ML Specialization</div>
+          <div class="deg">M.S. Computer Science, ML Specialization</div>
           <div class="sch">Georgia Institute of Technology (OMSCS)</div>
-          <div class="yr">2026 – 2029</div>
+          <div class="yr">Starting Fall 2026 · part-time · expected Dec 2029</div>
         </div>
         <div class="edu">
-          <div class="deg">B.S. Computing Science — Software Practice</div>
+          <div class="deg">B.Sc. Computer Science</div>
           <div class="sch">University of Alberta</div>
-          <div class="yr">2020 – 2025</div>
+          <div class="yr">2020 - 2025</div>
         </div>
       </div>
-      <div>
+      <div class="eblock glass">
         <div class="edu">
           <div class="deg">Azure AI Engineer Associate (AI-102)</div>
           <div class="sch">Microsoft</div>
@@ -302,17 +307,17 @@
     <h2 style="text-align:center">Get in touch</h2>
     <p class="lead" style="margin:0 auto 26px">Open to software engineering, data engineering, and AI/agent roles. The fastest way to reach me is email.</p>
     <div class="cta" style="justify-content:center">
-      <a class="btn primary" href="mailto:iheoma.richard@gmail.com">iheoma.richard@gmail.com</a>
-      <a class="btn" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      <a class="btn primary glass" href="mailto:iheoma.richard@gmail.com">iheoma.richard@gmail.com</a>
+      <a class="btn glass" href="https://github.com/iheomach" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn glass" href="https://linkedin.com/in/richardomor" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn glass" href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    © <span id="yr"></span> Richard Omorotionmwan · Built with plain HTML &amp; CSS · Hosted on GitHub Pages
+    © <span id="yr"></span> Richard Omorotionmwan · Built with plain HTML and CSS · Hosted on GitHub Pages
   </div>
 </footer>
 
@@ -322,7 +327,6 @@
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.12});
     reveals.forEach(function(el){ io.observe(el); });
-    // safety net: ensure everything is visible shortly after load
     window.addEventListener('load', function(){ setTimeout(function(){ reveals.forEach(function(el){ el.classList.add('in'); }); }, 1200); });
   } else {
     reveals.forEach(function(el){ el.classList.add('in'); });
